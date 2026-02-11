@@ -1,9 +1,12 @@
 .navlinks { display: flex;
     justify-content: center;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     gap: 40px;
+    align-items: center;
+    
+    
 
 
 
@@ -35,5 +38,13 @@
     transform: translateY(15px);}
     100% { opacity:1;
         transform: translateY(0);}
+
+}
+
+.cart-icon svg {width: auto;
+    fill:none;
+    height: 1.2rem;
+    stroke: #333;
+    margin-left: auto;
 
 }
