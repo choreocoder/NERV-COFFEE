@@ -91,22 +91,33 @@ main { display: grid;
 
 }
 
-.image-wrapper { width: 100%;
-    height: auto    ;
+.hero { width: 100%;
+    height: auto ;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
 
 
 }
 
+.hero img:hover { transform: scale(0.98);
+    box-shadow: 15px 15px 0px rgba(111, 78, 55, 0.1);
+
+}
+
 .writer-text { font-family: monospace;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 2px;
     color: black;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
     border-right: 2px solid #0000;
-    width: 0;
-    animation: typing 3.5s steps(30, end)
-    forwards, blink-caret 0.75s step-end infinite;
+    max-width: 480px;
+    animation: reveal-text 6s steps(120, end) forwards;
+    justify-content: right;
+    display: block;
+    line-height: 1.8;
+    text-align: justify;
+    hyphens: auto;
 
 
 }
@@ -123,3 +134,9 @@ to { width: 100%}
 
 
 }
+
+@keyframes reveal-text { 
+    from {max-height: 0;}
+    to { max-height: 500px}
+}
+
