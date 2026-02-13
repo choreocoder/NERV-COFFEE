@@ -140,3 +140,22 @@ to { width: 100%}
     to { max-height: 500px}
 }
 
+.footer-content { background-color: black;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    clear: both;
+
+
+
+}
+
+.copyright { color: white;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+
+}
