@@ -37,7 +37,12 @@
 
 .navbar { border-bottom: 1px solid black;
     padding-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+   
   
 
 }
@@ -63,38 +68,45 @@
     justify-content: space-between;
     width: 10em;
     height: 1em;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
    
 
 }
 
-.hero {display: grid;
+.hero {display: flex;
     padding-top: 40px;
     padding-left: 100px;
     justify-content: center;
     width: 100%;
-    min-height: 80vh;
+    height: 100vh;
     align-items: center;
     grid-template-columns: 1.2fr 1fr;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 999 !important;
 
 
 }
 
-main { display: grid;
+main { display: block;
     grid-template-columns: 1.2fr 1fr;
     width: 100%;
     min-height: 80vh;
     align-items: center;
     padding: 0 5%;
     gap: 20px;
-    height: 80vh
+    height: 100vh
 
 }
 
 .hero { width: 100%;
-    height: auto ;
+    height: 100%;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    object-fit: cover;
+    
 
 }
 
@@ -112,11 +124,14 @@ main { display: grid;
     border-right: 2px solid #0000;
     max-width: 480px;
     animation: reveal-text 6s steps(120, end) forwards;
-    justify-content: right;
-    display: block;
+    justify-content: center;
+    display: flex;
     line-height: 1.8;
     text-align: justify;
     hyphens: auto;
+    flex: 1;
+    padding: 50px;
+    flex-direction: column;
 
 
 }
@@ -140,14 +155,18 @@ to { width: 100%}
 }
 
 .brut-video { position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
     background-color: none;
-    border-top: 3px solid black;
-    margin-top: 50px;
-    margin-right: 0
-    position;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: -20px;
+    left: 50%;
+    right: 50%;
+    padding: 0;
+    position:relative;
+    
 
 }
 
@@ -158,9 +177,16 @@ to { width: 100%}
     justify-content: center;
     align-items: center;
     padding-top: 40px;
+    display: block;
 
 }
 
+* { margin: 0;
+    padding: 0;
+    box-sizing: border-box;}
+
+body, html { width: 100%;
+    overflow-x: hidden;}
 
 
 
