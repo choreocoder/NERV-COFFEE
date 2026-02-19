@@ -115,44 +115,9 @@ main { display: block;
 
 }
 
-.writer-text { font-family: monospace;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    color: black;
-    overflow: hidden;
-    white-space: normal;
-    border-right: 2px solid #0000;
-    max-width: 480px;
-    animation: reveal-text 6s steps(120, end) forwards;
-    justify-content: center;
-    display: flex;
-    line-height: 1.8;
-    text-align: justify;
-    hyphens: auto;
-    flex: 1;
-    padding: 50px;
-    flex-direction: column;
-
-
-}
-
-@keyframes typing { from { width: 0}
-to { width: 100%}
 
 
 
-}
-
-@keyframes blink-caret { from, to {border-color: transparent}
-50% { border-color: black;}
-
-
-}
-
-@keyframes reveal-text { 
-    from {max-height: 0;}
-    to { max-height: 500px}
-}
 
 .brut-video { position: relative;
     width: 100vw;
@@ -186,7 +151,37 @@ to { width: 100%}
     box-sizing: border-box;}
 
 body, html { width: 100%;
-    overflow-x: hidden;}
+    overflow-x: hidden;
+margin: 0;
+padding: 0;
+height: auto;}
+
+.menu-intro h1{ font-family: monospace;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.4em;
+    margin-bottom: 0 0 40px 0;;
+    color: #1a1a1a;
+    display: block;
+    clear: both;
+    text-transform: uppercase;
+
+
+}
+
+.description-wrapper { display:flex;
+    justify-content: flex-end;
+
+}
+
+.menu-description { max-width: 450px;
+    font-family: sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 400px;
+
+}
 
 
 
