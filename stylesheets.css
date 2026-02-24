@@ -167,15 +167,26 @@ height: auto;}
 
 h1 { font-family: monospace;
     text-align: left;
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-underline-offset: 8px;
+    border-bottom: 3px solid black;
+    display: inline-block;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+
     
 
 
 }
 
+.drink-grid { display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px 10%;
+    max-width: 1000px;
+    margin: 0 auto;
 
+
+
+}
 
 
 
