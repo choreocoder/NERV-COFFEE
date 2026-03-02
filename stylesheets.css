@@ -188,6 +188,7 @@ h1 { font-family: monospace;
 
 
 
+
 }
 
 .drink-item {
@@ -198,6 +199,7 @@ h1 { font-family: monospace;
     overflow: hidden;
     cursor: pointer;
     transition: background 0.3 ease;
+    height: max-content;
 }
 
 @keyframes hover-lift {
