@@ -218,6 +218,53 @@ opacity: 1;}
     filter: grayscale(0%);
 }
 
+.cortado-info {
+    margin-top: 15px;
+}
 
+.cortado-link {
+    border-bottom: 2px black solid;
+    font-family: monospace;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
 
+.cortado-link:hover {
+    color: #555555; 
+}
 
+.dalgona-info {
+    margin-top: 15px;
+}
+
+.dalgona-link {
+    border-bottom: 2px black solid;
+    font-family: monospace;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.dalgona-link:hover {
+    color: #555555;
+}
+
+.cappuccino-info {
+    margin-top: 15px;
+}
+
+.cappuccino-link {
+    border-bottom: 2px black solid;
+    font-family: monospace;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.cappuccino-link:hover {
+     color: #555555;
+}
