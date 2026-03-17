@@ -89,6 +89,7 @@
 
 }
 
+
 main { display: block;
     grid-template-columns: 1.2fr 1fr;
     width: 100%;
@@ -183,7 +184,9 @@ h1 { font-family: monospace;
     max-width: 1200px;
     width: 95%;
     margin: 40px auto;
-  
+    border-bottom: 2px black solid;
+    padding-bottom: 50px;
+   
 
 
 
@@ -290,4 +293,15 @@ opacity: 1;}
     color: grey;
     line-height: 1.8;
     font-size: 13px;
+}
+
+.nerv-hardware {
+    display: block;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin: 60px auto;
+    margin-top: 100px;
+    max-width: 1200px;
+    width: 90%;
 }
