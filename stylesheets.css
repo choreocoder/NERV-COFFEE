@@ -296,7 +296,7 @@ opacity: 1;}
 }
 
 .nerv-hardware {
-    display: block;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
@@ -304,4 +304,10 @@ opacity: 1;}
     margin-top: 100px;
     max-width: 1200px;
     width: 90%;
+}
+
+.hardware-info {
+    font-family: monospace;
+    margin-top:-50px;
+
 }
