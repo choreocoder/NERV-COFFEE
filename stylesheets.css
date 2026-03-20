@@ -237,7 +237,6 @@ h1 {
 }
 
 .nerv-hardware img {
-    box-shadow: 15px 15px 0px #000;
     border: 5px solid grey;
     height: auto;
     display: block;
@@ -263,6 +262,30 @@ h1 {
 .hardware-info p {
     text-align: center;
     justify-content: center;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.buy-button-1 {
+     background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: center;
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+.buy-button-1:hover {
+    background-color: #333;
+    color:grey;
+    transform: scale(0.9);
 }
 
 /* ===== PITCHER SHOWCASE ===== */
@@ -280,11 +303,11 @@ h1 {
 }
 
 .forge img {
-    box-shadow: 15px 15px 0px #000;
     border: 5px solid grey;
     height: auto;
     display: block;
     width: 100%;
+    margin-bottom: 100px;
 }
 
 .forge img:hover {
@@ -306,11 +329,13 @@ h1 {
 .forge-info p {
     text-align: center;
     justify-content: center;
+    margin-top: 10px;
+    text-decoration: underline;
 
 }
 
 
-.buy-button {
+.buy-button-2 {
     background-color: black;
     color: white;
     border: none;
@@ -325,4 +350,10 @@ h1 {
     margin-right: auto;
     margin-top: 15px;
    
+}
+
+.buy-button-2:hover {
+    background-color: #333;
+    color:grey;
+    transform: scale(0.9);
 }
