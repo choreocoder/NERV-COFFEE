@@ -260,6 +260,11 @@ h1 {
     margin-top: -50px;
 }
 
+.hardware-info p {
+    text-align: center;
+    justify-content: center;
+}
+
 /* ===== PITCHER SHOWCASE ===== */
 /* Two-column layout: image + product info */
 .forge {
@@ -294,4 +299,30 @@ h1 {
 
 .forge-info {
     font-family: monospace;
+   
+
+}
+
+.forge-info p {
+    text-align: center;
+    justify-content: center;
+
+}
+
+
+.buy-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: center;
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+   
 }
