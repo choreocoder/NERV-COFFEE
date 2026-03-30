@@ -357,3 +357,100 @@ h1 {
     color:grey;
     transform: scale(0.9);
 }
+    
+
+/* ===== FLUSK SHOWCASE ===== */
+/* Two-column layout: image + product info */
+
+.flusk {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin: 100px auto 60px auto;
+    max-width: 1200px;
+    width: 90%;
+    padding: 20px;
+    border-bottom: 2px solid black;
+}
+
+.flusk img {
+    border: 5px solid grey;
+    height: auto;
+    display: block;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.flusk img:hover {
+    animation: hover-lift 0.4s forwards;
+    filter: grayscale(0%);
+}
+
+.flusk h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.flusk-info {
+    font-family: monospace;
+   
+
+}
+
+.flusk-info p {
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    text-decoration: underline;
+
+}
+
+
+.buy-button-3 {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: center;
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+   
+}
+
+.buy-button-3:hover {
+    background-color: #333;
+    color:grey;
+    transform: scale(0.9);
+}
+
+/* ===== CLOSING STATMENT ===== */
+/* One paragraph right before header */
+
+.statement {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    margin-top: 60px;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid black;
+    margin-top: 40px;
+    color: white;
+    background-color: black;
+    font-family: monospace;
+}
