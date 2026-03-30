@@ -430,30 +430,29 @@ h1 {
 
 /* ===== FOOTER ===== */
 footer {
+    display: flex;
+    align-items: center;
     text-align: left;
-    padding: 20px 0;
+    padding: 20px 5%;
     border-top: 1px solid black;
-    margin-top: 40px;
     color: white;
     background-color: black;
     font-family: monospace;
+    justify-content: space-between;
+    position: relative;
+    gap: 40px;
+    
 }
 
-footer p {
-    margin-top: 10px;
-    font-family: "HK Modular", monospace;
-}
-
-footer img {
-    display: block;
-    margin: 0;
-    width: 100px;
-    height: 150px;
-    padding-left: 10px;
-}
 
 .footer-logo {
     font-family: "HK Modular", monospace;
+    display: inline-block;
+    width: 150px;
+    height: auto;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    margin: -30px 0;
 }
 
 /* ===== 3D LOGO ANIMATION ===== */
@@ -471,4 +470,14 @@ footer img {
 
 .footer-logo img.spin {
     animation: rotate 3s linear infinite;
+}
+
+
+/* ==== Bottom Navigation === */
+.navbottom {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 40px;
 }
