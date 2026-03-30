@@ -9,7 +9,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-const navLinks = document.querySelector('.footer');
+const logo = document.querySelector('.footer-logo img');
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
