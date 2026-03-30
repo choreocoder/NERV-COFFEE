@@ -1,5 +1,6 @@
+/* ===== HEADER SCROLL EFFECT ===== */
+/* Add styling to header when page is scrolled */
 const header = document.querySelector('header');
-console.log(header);
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 0) {
@@ -9,6 +10,8 @@ window.addEventListener('scroll', () => {
     }
 });
 
+/* ===== FOOTER LOGO ANIMATION ===== */
+/* Trigger 3D rotation animation when footer logo enters viewport */
 const logo = document.querySelector('.footer-logo img');
 
 const observer = new IntersectionObserver(entries => {

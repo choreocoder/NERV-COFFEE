@@ -1,10 +1,11 @@
+/* Custom font import */
 @font-face {
     font-family: 'HK Modular';
     src: url('.fonts/Modular.ttf') format('truetype');
 }
 
-
 /* ===== GLOBAL RESET ===== */
+/* Remove default margins, padding, and set box-sizing */
 * {
     margin: 0;
     padding: 0;
@@ -16,31 +17,30 @@ body, html {
     height: auto;
     margin: 0;
     padding: 0;
-    overflow-x: clip; /* Prevent horizontal scrolling */
+    overflow-x: clip;
 }
 
 /* ===== HEADER & NAVIGATION ===== */
-
-header{
+header {
     border-bottom: 1px solid black;
     padding: 20px 0;
-    position: sticky;                                     
+    position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: None ; /* Semi-transparent white background */
-    transition: background-color 0.7s ease, box-shadow 0.7s ease; /* Smooth transition for scroll effects */
+    background-color: transparent;
+    transition: background-color 0.7s ease, box-shadow 0.7s ease;
 }
 
+/* Header styling when page is scrolled */
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque when scrolled */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    backdrop-filter: blur(5px); /* Optional: adds a blur effect to the background when scrolled */
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .navbar {
     border-bottom: 1px solid black;
     padding: 20px 0;
-   
 }
 
 .navlinks {
@@ -157,7 +157,7 @@ h1 {
 }
 
 /* ===== DRINK GRID ===== */
-/* 3-column responsive grid for drink cards */
+/* 3-column responsive grid for seasonal drink cards */
 .drink-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -193,7 +193,7 @@ h1 {
 }
 
 /* ===== DRINK CARD STYLES ===== */
-/* Cortado, Dalgona, Cappuccino - shared link styling */
+/* Shared styling for drink info and links */
 .cortado-info,
 .dalgona-info,
 .cappuccino-info {
@@ -229,7 +229,7 @@ h1 {
 }
 
 /* ===== HARDWARE SHOWCASE ===== */
-/* Two-column layout: image + product info */
+/* Two-column layout: image (left) + product info (right) */
 .nerv-hardware {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -267,22 +267,19 @@ h1 {
 
 .hardware-info p {
     text-align: center;
-    justify-content: center;
     margin-top: 10px;
     text-decoration: underline;
 }
 
 .buy-button-1 {
-     background-color: black;
+    background-color: black;
     color: white;
     border: none;
     padding: 10px 20px;
     font-family: monospace;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    justify-content: center;
     display: block;
-    justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
@@ -290,12 +287,12 @@ h1 {
 
 .buy-button-1:hover {
     background-color: #333;
-    color:grey;
+    color: grey;
     transform: scale(0.9);
 }
 
 /* ===== PITCHER SHOWCASE ===== */
-/* Two-column layout: image + product info */
+/* Two-column layout: image (left) + product info (right) */
 .forge {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -328,18 +325,13 @@ h1 {
 
 .forge-info {
     font-family: monospace;
-   
-
 }
 
 .forge-info p {
     text-align: center;
-    justify-content: center;
     margin-top: 10px;
     text-decoration: underline;
-
 }
-
 
 .buy-button-2 {
     background-color: black;
@@ -349,25 +341,20 @@ h1 {
     font-family: monospace;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    justify-content: center;
     display: block;
-    justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
-   
 }
 
 .buy-button-2:hover {
     background-color: #333;
-    color:grey;
+    color: grey;
     transform: scale(0.9);
 }
-    
 
 /* ===== FLUSK SHOWCASE ===== */
-/* Two-column layout: image + product info */
-
+/* Two-column layout: image (left) + product info (right) */
 .flusk {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -400,18 +387,13 @@ h1 {
 
 .flusk-info {
     font-family: monospace;
-   
-
 }
 
 .flusk-info p {
     text-align: center;
-    justify-content: center;
     margin-top: 10px;
     text-decoration: underline;
-
 }
-
 
 .buy-button-3 {
     background-color: black;
@@ -421,24 +403,20 @@ h1 {
     font-family: monospace;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    justify-content: center;
     display: block;
-    justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
-   
 }
 
 .buy-button-3:hover {
     background-color: #333;
-    color:grey;
+    color: grey;
     transform: scale(0.9);
 }
 
-/* ===== CLOSING ===== */
-/* One paragraph and footer info */
-
+/* ===== CLOSING SECTION ===== */
+/* Brand philosophy and values statement */
 .statement {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
@@ -450,7 +428,7 @@ h1 {
     font-size: 15px;
 }
 
-
+/* ===== FOOTER ===== */
 footer {
     text-align: left;
     padding: 20px 0;
@@ -463,7 +441,7 @@ footer {
 
 footer p {
     margin-top: 10px;
-font-family:  "HK Modular", monospace;
+    font-family: "HK Modular", monospace;
 }
 
 footer img {
@@ -472,16 +450,14 @@ footer img {
     width: 100px;
     height: 150px;
     padding-left: 10px;
-    
 }
 
 .footer-logo {
-    font-family: "Modular";
+    font-family: "HK Modular", monospace;
 }
 
-/* ===== LOGO SPIN ===== */
-/* nerv logo key frames and effects */
-
+/* ===== 3D LOGO ANIMATION ===== */
+/* Footer logo 3D rotation effect */
 .footer-logo img {
     display: inline-block;
     perspective: 800px;
@@ -489,9 +465,8 @@ footer img {
 }
 
 @keyframes rotate {
-        0% { transform: rotateY(0deg); }
-        100% { transform: rotateY(360deg);}
-
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
 }
 
 .footer-logo img.spin {
