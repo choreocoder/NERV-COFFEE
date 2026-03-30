@@ -8,3 +8,17 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
 });
+
+const navLinks = document.querySelector('.footer');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            logo.classList.add('spin');
+        } else {
+            logo.classList.remove('spin');
+        }
+    });
+});
+
+observer.observe(logo);

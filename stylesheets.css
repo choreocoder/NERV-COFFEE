@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'HK Modular';
+    src: url('.fonts/Modular.ttf') format('truetype');
+}
+
+
 /* ===== GLOBAL RESET ===== */
 * {
     margin: 0;
@@ -430,8 +436,8 @@ h1 {
     transform: scale(0.9);
 }
 
-/* ===== CLOSING STATMENT ===== */
-/* One paragraph right before header */
+/* ===== CLOSING ===== */
+/* One paragraph and footer info */
 
 .statement {
     font-family: 'Josefin Sans', sans-serif;
@@ -446,11 +452,49 @@ h1 {
 
 
 footer {
-    text-align: center;
+    text-align: left;
     padding: 20px 0;
     border-top: 1px solid black;
     margin-top: 40px;
     color: white;
     background-color: black;
     font-family: monospace;
+}
+
+footer p {
+    margin-top: 10px;
+font-family:  "HK Modular", monospace;
+}
+
+footer img {
+    display: block;
+    margin: 0;
+    width: 100px;
+    height: 150px;
+    padding-left: 10px;
+}
+
+.footer-logo {
+    font-family: "Modular";
+}
+
+/* ===== LOGO SPIN ===== */
+/* nerv logo key frames and effects */
+
+.footer-logo img {
+    display: inline-block;
+}
+
+@keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+
+}
+
+.footer-logo.spin {
+    animation: rotate 3s linear infinite;
 }
