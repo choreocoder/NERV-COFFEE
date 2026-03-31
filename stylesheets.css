@@ -422,6 +422,7 @@ h1 {
     font-weight: 100;
     text-align: center;
     margin-top: 60px;
+    margin-bottom: 60px;
     font-style: italic;
     color: grey;
     line-height: 1.8;
@@ -431,6 +432,7 @@ h1 {
 /* ===== FOOTER ===== */
 footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: left;
     padding: 20px 5%;
@@ -440,7 +442,7 @@ footer {
     font-family: monospace;
     justify-content: space-between;
     position: relative;
-    gap: 40px;
+    gap: 16px;
     
 }
 
@@ -453,6 +455,7 @@ footer {
     perspective: 800px;
     transform-style: preserve-3d;
     margin: -30px 0;
+    align-self: flex-start;
 }
 
 /* ===== 3D LOGO ANIMATION ===== */
@@ -476,12 +479,11 @@ footer {
 /* ==== Bottom Navigation === */
 .navbottom {
     display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     gap: 40px;
     font-family: monospace;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbottom a {
@@ -494,4 +496,10 @@ footer {
     color: #777;
     text-decoration: underline;
     transition: 0.5s;
+}
+
+.footer-copy {
+    font-family: monospace;
+    color: white;
+    font-size: 0.85rem;
 }
