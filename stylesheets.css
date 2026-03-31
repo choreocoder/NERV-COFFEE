@@ -480,4 +480,18 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     gap: 40px;
+    font-family: monospace;
+    list-style: none;
+}
+
+.navbottom a {
+  color: white;           /* change link color */
+  text-decoration: none;  /* remove underline */
+  font-family: monospace;
+}
+
+.navbottom a:hover {
+    color: #777;
+    text-decoration: underline;
+    transition: 0.5s;
 }
