@@ -562,3 +562,8 @@ footer {
     margin: 0;
     text-align: center;
 }
+
+
+.typewriter {
+    white-space: pre-wrap;
+}
