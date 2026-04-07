@@ -480,9 +480,9 @@ footer {
 .footer-col.footer-contact {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 20px;
     font-family: monospace;
-    align-self: flex-end;
+    align-self: flex-start;
 }
 
 .footer-contact-label,
@@ -500,7 +500,8 @@ footer {
     color: white;
     font-size: 0.62rem;
     margin: 0;
-    text-align: right;
+    text-align: left;
+    
 }
 
 .footer-contact {
