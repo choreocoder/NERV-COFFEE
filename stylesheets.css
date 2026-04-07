@@ -432,15 +432,23 @@ h1 {
 /* ===== FOOTER ===== */
 /* Black footer with logo, contact info, navigation, and copyright */
 footer {
-    display: flex;
-    flex-direction: column;
     text-align: left;
-    padding: 0 5% 40px 5%;
+    padding: 40px 5%;
     border-top: 1px solid black;
     color: white;
     background-color: black;
     font-family: monospace;
     position: relative;
+}
+
+/* Footer inner container: 3-column layout */
+.footer-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 40px;
 }
 
 /* Footer logo container with 3D rotation capability */
@@ -451,8 +459,7 @@ footer {
     height: auto;
     perspective: 800px;
     transform-style: preserve-3d;
-    margin: -30px 0;
-    align-self: flex-start;
+    flex-shrink: 0;
 }
 
 /* Footer logo image with 3D perspective */
@@ -483,12 +490,14 @@ footer {
     gap: 20px;
     font-family: monospace;
     align-self: flex-start;
+    text-align: left;
+    flex-shrink: 0;
 }
 
 .footer-contact-label,
 .nav-label {
     font-family: monospace;
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: grey;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -498,16 +507,9 @@ footer {
 .footer-contact p {
     font-family: monospace;
     color: white;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     margin: 0;
     text-align: left;
-    
-}
-
-.footer-contact {
-    position: absolute;
-    right: 5%;
-    top: 40px
 }
 
 /* ===== FOOTER NAVIGATION ===== */
@@ -515,13 +517,12 @@ footer {
 .navbottom {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: auto;
     gap: 30px;
     font-family: monospace;
     list-style: none;
     padding: 0;
-    margin: 0 0 12px 0;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .navbottom li {
@@ -544,12 +545,20 @@ footer {
     font-size: 1.0rem;
 }
 
+/* ===== FOOTER BOTTOM ===== */
+/* Bottom section with copyright text */
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 25px;
+    margin-top: 40px;
+}
+
 /* ===== FOOTER COPYRIGHT ===== */
-/* Copyright and legal text */
+/* Copyright and legal text - centered */
 .footer-copy {
     font-family: monospace;
     color: white;
     font-size: 0.70rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 0;
+    text-align: center;
 }
