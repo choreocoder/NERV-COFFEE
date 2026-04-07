@@ -430,23 +430,20 @@ h1 {
 }
 
 /* ===== FOOTER ===== */
+/* Black footer with logo, contact info, navigation, and copyright */
 footer {
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: left;
-    padding 0 5% 40px 5%;
+    padding: 0 5% 40px 5%;
     border-top: 1px solid black;
     color: white;
     background-color: black;
     font-family: monospace;
-    justify-content: space-between;
     position: relative;
-   
-    
 }
 
-
+/* Footer logo container with 3D rotation capability */
 .footer-logo {
     font-family: "HK Modular", monospace;
     display: inline-block;
@@ -458,14 +455,17 @@ footer {
     align-self: flex-start;
 }
 
-/* ===== 3D LOGO ANIMATION ===== */
-/* Footer logo 3D rotation effect */
+/* Footer logo image with 3D perspective */
 .footer-logo img {
     display: inline-block;
     perspective: 800px;
     transform-style: preserve-3d;
+    width: 100%;
+    height: auto;
 }
 
+/* ===== 3D LOGO ANIMATION ===== */
+/* Footer logo rotates on Y-axis when in viewport */
 @keyframes rotate {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
@@ -475,8 +475,42 @@ footer {
     animation: rotate 3s linear infinite;
 }
 
+/* ===== FOOTER CONTACT SECTION ===== */
+/* Contact information displayed in footer right column */
+.footer-col.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: monospace;
+    align-self: flex-end;
+}
 
-/* ==== Bottom Navigation === */
+.footer-contact-label,
+.nav-label {
+    font-family: monospace;
+    font-size: 0.55rem;
+    color: grey;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+.footer-contact p {
+    font-family: monospace;
+    color: white;
+    font-size: 0.62rem;
+    margin: 0;
+    text-align: right;
+}
+
+.footer-contact {
+    position: absolute;
+    right: 5%;
+    top: 40px
+}
+
+/* ===== FOOTER NAVIGATION ===== */
+/* Bottom navigation links */
 .navbottom {
     display: flex;
     gap: 40px;
@@ -486,11 +520,14 @@ footer {
     margin: 0 0 12px 0;
 }
 
+.navbottom li {
+    list-style: none;
+}
+
 .navbottom a {
-  color: white;           /* change link color */
-  text-decoration: none;  /* remove underline */
-  font-family: monospace;
- 
+    color: white;
+    text-decoration: none;
+    font-family: monospace;
 }
 
 .navbottom a:hover {
@@ -499,12 +536,12 @@ footer {
     transition: 0.5s;
 }
 
+/* ===== FOOTER COPYRIGHT ===== */
+/* Copyright and legal text */
 .footer-copy {
     font-family: monospace;
     color: white;
-    font-size: 0.70grem;
+    font-size: 0.70rem;
     margin-top: 20px;
     margin-bottom: 20px;
-    
-    
 }
