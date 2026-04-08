@@ -1,4 +1,4 @@
-/* Custom font import */
+/* ===== CUSTOM FONTS ===== */
 @font-face {
     font-family: 'HK Modular';
     src: url('.fonts/Modular.ttf') format('truetype');
@@ -563,7 +563,7 @@ footer {
     text-align: center;
 }
 
-
+/* ===== ABOUT PAGE STYLES ===== */
 .about-section {
     display: flex;
     flex-direction: column;
@@ -579,11 +579,11 @@ footer {
 }
 
 .about-section h2 {
-   border-top: black 5px solid;
+    border-top: black 5px solid;
     padding-top: 10px;
-   
 }
 
+/* Lookbook image with frame */
 .lookbook {
     display: block;
     width: 100%;
@@ -592,10 +592,9 @@ footer {
     object-fit: cover;
     margin: 30px auto;
     border: 5px solid whitesmoke;
-    
-  
 }
 
+/* Origin section styling */
 .origin {
     max-width: 800px;
     margin-top: 40px;
@@ -606,9 +605,9 @@ footer {
     color: grey;
     line-height: 1.8;
     font-size: 15px;
-   
 }
 
+/* Philosophy section styling */
 .philosophy {
     max-width: 800px;
     margin-top: 40px;
@@ -619,5 +618,19 @@ footer {
     color: grey;
     line-height: 1.8;
     font-size: 15px;
-   
+}
+
+/* Two-image grid under philosophy */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.philosophy-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: 5px solid whitesmoke;
 }
