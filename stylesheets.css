@@ -596,7 +596,20 @@ footer {
   
 }
 
-.manifesto {
+.origin {
+    max-width: 800px;
+    margin-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    text-align: left;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 15px;
+   
+}
+
+.philosophy {
     max-width: 800px;
     margin-top: 40px;
     font-family: 'Josefin Sans', sans-serif;
