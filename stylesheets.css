@@ -579,9 +579,21 @@ footer {
 }
 
 .about-section h2 {
-   border-top: grey 5px solid;
+   border-top: black 5px solid;
     padding-top: 10px;
    
+}
+
+.lookbook {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    margin: 30px auto;
+    border: 5px solid whitesmoke;
+    
+  
 }
 
 .manifesto {
