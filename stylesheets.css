@@ -579,7 +579,7 @@ footer {
 }
 
 .about-section h2 {
-    border-top: black 5px solid;
+    border-top: black 1px solid;  /* was 5px */
     padding-top: 10px;
 }
 
@@ -605,6 +605,7 @@ footer {
     color: grey;
     line-height: 1.8;
     font-size: 15px;
+    border-top: black 1px solid;  /* was 5px */
 }
 
 /* Philosophy section styling */
@@ -633,4 +634,21 @@ footer {
     height: 300px;
     object-fit: cover;
     border: 5px solid whitesmoke;
+}
+
+/* Material section styling - no top border */
+.material {
+    max-width: 800px;
+    margin-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    text-align: left;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.material h2 {
+    padding-top: 10px;
 }
