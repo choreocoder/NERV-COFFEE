@@ -652,3 +652,8 @@ footer {
 .material h2 {
     padding-top: 10px;
 }
+
+/* Remove top border from h2 inside .material that don't need it */
+.material h2:not(:first-of-type) {
+    border-top: none;
+}
