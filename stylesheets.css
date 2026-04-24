@@ -680,6 +680,9 @@ footer {
     gap: 40px;
    width: 90%   ;
     margin: 0 auto;
+     padding-bottom: 150px;
+    border-bottom: 1px solid black;
+    margin-bottom: 80px;
 }
 
 .menu-content h2 {
@@ -781,4 +784,29 @@ footer {
 
 .btn-add-to-cart:hover {
     background-color: #555;
+}
+
+.product-name {
+    font-family: monospace;
+        font-weight: 700;
+}
+
+.product-price {
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.product-description {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    text-align: left;
+    margin-top: 5px;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.btn-add-to-cart {
+    font-family: 'HK Modular', monospace;
 }
