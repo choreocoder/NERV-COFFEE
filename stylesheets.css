@@ -1,11 +1,14 @@
-/* ===== CUSTOM FONTS ===== */
+/* ================== */
+/* CUSTOM FONTS       */
+/* ================== */
 @font-face {
     font-family: 'HK Modular';
     src: url('.fonts/Modular.ttf') format('truetype');
 }
 
-/* ===== GLOBAL RESET ===== */
-/* Remove default margins, padding, and set box-sizing */
+/* ================== */
+/* GLOBAL RESET       */
+/* ================== */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +23,45 @@ body, html {
     overflow-x: clip;
 }
 
-/* ===== HEADER & NAVIGATION ===== */
+/* ================== */
+/* ANIMATIONS         */
+/* ================== */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hover-lift {
+    from {
+        transform: translateY(0);
+        scale: 1;
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-5px);
+        scale: 1.05;
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* ================== */
+/* HEADER & NAV       */
+/* ================== */
 header {
     border-bottom: 1px solid black;
     padding: 20px 0;
@@ -31,11 +72,18 @@ header {
     transition: background-color 0.7s ease, box-shadow 0.7s ease;
 }
 
-/* Header styling when page is scrolled */
 header.scrolled {
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
+}
+
+.logo {
+    display: block;
+    justify-content: space-between;
+    width: 10em;
+    height: 1em;
+    padding-bottom: 40px;
 }
 
 .navbar {
@@ -76,40 +124,28 @@ header.scrolled {
     padding-right: 20px;
 }
 
-.logo {
+/* ================== */
+/* MAIN LAYOUT        */
+/* ================== */
+main {
     display: block;
-    justify-content: space-between;
-    width: 10em;
-    height: 1em;
-    padding-bottom: 40px;
+    width: 100%;
+    min-height: 80vh;
+    padding: 0 5%;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes popIn {
-    0% {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+h1 {
+    font-family: monospace;
+    text-align: left;
+    border-bottom: 3px solid black;
+    display: inline-block;
+    padding-bottom: 5px;
+    text-transform: uppercase;
 }
 
-@keyframes hover-lift {
-    from {
-        transform: translateY(0);
-        scale: 1;
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-5px);
-        scale: 1.05;
-        opacity: 1;
-    }
-}
-
-/* ===== HERO VIDEO SECTION ===== */
+/* ================== */
+/* HERO VIDEO         */
+/* ================== */
 .brut-video {
     position: relative;
     width: 100vw;
@@ -130,15 +166,9 @@ header.scrolled {
     display: block;
 }
 
-/* ===== MAIN LAYOUT ===== */
-main {
-    display: block;
-    width: 100%;
-    min-height: 80vh;
-    padding: 0 5%;
-}
-
-/* ===== MENU INTRO SECTION ===== */
+/* ================== */
+/* MENU INTRO         */
+/* ================== */
 .menu-intro {
     display: block;
     clear: both;
@@ -147,17 +177,9 @@ main {
     text-align: center;
 }
 
-h1 {
-    font-family: monospace;
-    text-align: left;
-    border-bottom: 3px solid black;
-    display: inline-block;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-}
-
-/* ===== DRINK GRID ===== */
-/* 3-column responsive grid for seasonal drink cards */
+/* ================== */
+/* DRINK GRID         */
+/* ================== */
 .drink-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -192,8 +214,18 @@ h1 {
     filter: grayscale(0%);
 }
 
-/* ===== DRINK CARD STYLES ===== */
-/* Shared styling for drink info and links */
+.drink-grid p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 10px;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+/* ===== DRINK CARD STYLING ===== */
 .cortado-info,
 .dalgona-info,
 .cappuccino-info {
@@ -217,19 +249,9 @@ h1 {
     color: #555555;
 }
 
-.drink-grid p {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
-    text-align: left;
-    margin-top: 10px;
-    font-style: italic;
-    color: grey;
-    line-height: 1.8;
-    font-size: 13px;
-}
-
-/* ===== HARDWARE SHOWCASE ===== */
-/* Two-column layout: image (left) + product info (right) */
+/* ================== */
+/* HARDWARE SHOWCASE  */
+/* ================== */
 .nerv-hardware {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -291,8 +313,9 @@ h1 {
     transform: scale(0.9);
 }
 
-/* ===== PITCHER SHOWCASE ===== */
-/* Two-column layout: image (left) + product info (right) */
+/* ================== */
+/* PITCHER SHOWCASE   */
+/* ================== */
 .forge {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -353,8 +376,9 @@ h1 {
     transform: scale(0.9);
 }
 
-/* ===== FLUSK SHOWCASE ===== */
-/* Two-column layout: image (left) + product info (right) */
+/* ================== */
+/* FLUSK SHOWCASE     */
+/* ================== */
 .flusk {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -415,8 +439,9 @@ h1 {
     transform: scale(0.9);
 }
 
-/* ===== CLOSING SECTION ===== */
-/* Brand philosophy and values statement */
+/* ================== */
+/* CLOSING STATEMENT  */
+/* ================== */
 .statement {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
@@ -429,141 +454,9 @@ h1 {
     font-size: 15px;
 }
 
-/* ===== FOOTER ===== */
-/* Black footer with logo, contact info, navigation, and copyright */
-footer {
-    text-align: left;
-    padding: 40px 5%;
-    border-top: 1px solid black;
-    color: white;
-    background-color: black;
-    font-family: monospace;
-    position: relative;
-}
-
-/* Footer inner container: 3-column layout */
-.footer-inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 60px;
-    margin-bottom: 40px;
-}
-
-/* Footer logo container with 3D rotation capability */
-.footer-logo {
-    font-family: "HK Modular", monospace;
-    display: inline-block;
-    width: 150px;
-    height: auto;
-    perspective: 800px;
-    transform-style: preserve-3d;
-    flex-shrink: 0;
-}
-
-/* Footer logo image with 3D perspective */
-.footer-logo img {
-    display: inline-block;
-    perspective: 800px;
-    transform-style: preserve-3d;
-    width: 100%;
-    height: auto;
-}
-
-/* ===== 3D LOGO ANIMATION ===== */
-/* Footer logo rotates on Y-axis when in viewport */
-@keyframes rotate {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(360deg); }
-}
-
-.footer-logo img.spin {
-    animation: rotate 3s linear infinite;
-}
-
-/* ===== FOOTER CONTACT SECTION ===== */
-/* Contact information displayed in footer right column */
-.footer-col.footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-family: monospace;
-    align-self: flex-start;
-    text-align: left;
-    flex-shrink: 0;
-}
-
-.footer-contact-label,
-.nav-label {
-    font-family: monospace;
-    font-size: 0.65rem;
-    color: grey;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    list-style: none;
-}
-
-.footer-contact p {
-    font-family: monospace;
-    color: white;
-    font-size: 0.75rem;
-    margin: 0;
-    text-align: left;
-}
-
-/* ===== FOOTER NAVIGATION ===== */
-/* Bottom navigation links */
-.navbottom {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    font-family: monospace;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-shrink: 0;
-}
-
-.navbottom li {
-    list-style: none;
-}
-
-.navbottom a {
-    color: white;
-    text-decoration: none;
-    font-family: monospace;
-}
-
-.navbottom a:hover {
-    color: #777;
-    text-decoration: underline;
-    transition: 0.5s;
-}
-
-.nav-label {
-    font-size: 1.0rem;
-}
-
-/* ===== FOOTER BOTTOM ===== */
-/* Bottom section with copyright text */
-.footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 25px;
-    margin-top: 40px;
-}
-
-/* ===== FOOTER COPYRIGHT ===== */
-/* Copyright and legal text - centered */
-.footer-copy {
-    font-family: monospace;
-    color: white;
-    font-size: 0.70rem;
-    margin: 0;
-    text-align: center;
-}
-
-/* ===== ABOUT PAGE STYLES ===== */
+/* ================== */
+/* ABOUT PAGE         */
+/* ================== */
 .about-section {
     display: flex;
     flex-direction: column;
@@ -579,11 +472,10 @@ footer {
 }
 
 .about-section h2 {
-    border-top: black 1px solid;  /* was 5px */
+    border-top: 1px solid black;
     padding-top: 10px;
 }
 
-/* Lookbook image with frame */
 .lookbook {
     display: block;
     width: 100%;
@@ -594,7 +486,6 @@ footer {
     border: 5px solid whitesmoke;
 }
 
-/* Origin section styling */
 .origin {
     max-width: 800px;
     margin-top: 40px;
@@ -605,10 +496,9 @@ footer {
     color: grey;
     line-height: 1.8;
     font-size: 15px;
-    border-top: black 1px solid;  /* was 5px */
+    border-top: 1px solid black;
 }
 
-/* Philosophy section styling */
 .philosophy {
     max-width: 800px;
     margin-top: 40px;
@@ -621,7 +511,6 @@ footer {
     font-size: 15px;
 }
 
-/* Two-image grid under philosophy */
 .philosophy-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -636,7 +525,6 @@ footer {
     border: 5px solid whitesmoke;
 }
 
-/* Material section styling - no top border */
 .material {
     max-width: 800px;
     margin-top: 40px;
@@ -653,11 +541,9 @@ footer {
     padding-top: 10px;
 }
 
-/* Remove top border from h2 inside .material that don't need it */
 .material h2:not(:first-of-type) {
     border-top: none;
 }
-
 
 .pedastal img {
     margin-top: 20px;
@@ -667,6 +553,9 @@ footer {
     border: 5px solid whitesmoke;
 }
 
+/* ================== */
+/* MENU PAGE          */
+/* ================== */
 .menu-header {
     display: flex;
     flex-direction: column;
@@ -674,13 +563,13 @@ footer {
     padding-top: 40px;
 }
 
-.menu-content{
+.menu-content {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     gap: 40px;
-   width: 90%   ;
+    width: 90%;
     margin: 0 auto;
-     padding-bottom: 150px;
+    padding-bottom: 150px;
     border-bottom: 1px solid black;
     margin-bottom: 80px;
 }
@@ -691,19 +580,19 @@ footer {
     margin-bottom: 0.25rem;
     font-family: monospace;
     border-bottom: 2px solid black;
-     padding-bottom: 5px;
-     text-transform: uppercase;
+    padding-bottom: 5px;
+    text-transform: uppercase;
 }
 
-.menu-content img{
-    width: 100%; 
+.menu-content img {
+    width: 100%;
     height: 350px;
     object-fit: cover;
     padding: 10px;
     margin-top: 40px;
 }
 
-/* Product Card Styles */
+/* ===== PRODUCT CARDS ===== */
 .product-card {
     display: flex;
     flex-direction: column;
@@ -742,6 +631,7 @@ footer {
 }
 
 .product-name {
+    font-family: monospace;
     font-size: 1.1rem;
     font-weight: 700;
     margin: 0.5rem 0;
@@ -749,9 +639,16 @@ footer {
 }
 
 .product-description {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
     font-size: 0.9rem;
-    color: #666;
+    text-align: left;
     margin: 0.5rem 0;
+    margin-top: 5px;
+    font-style: italic;
+    color: grey;
+    line-height: 1.8;
+    font-size: 13px;
     flex-grow: 1;
 }
 
@@ -765,12 +662,14 @@ footer {
 }
 
 .product-price {
+    font-family: monospace;
     font-weight: 700;
     font-size: 1.2rem;
     color: #333;
 }
 
 .btn-add-to-cart {
+    font-family: 'HK Modular', monospace;
     background-color: #333;
     color: #fff;
     border: none;
@@ -786,27 +685,122 @@ footer {
     background-color: #555;
 }
 
-.product-name {
-    font-family: monospace;
-        font-weight: 700;
-}
-
-.product-price {
-    font-family: monospace;
-    font-weight: 700;
-}
-
-.product-description {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
+/* ================== */
+/* FOOTER             */
+/* ================== */
+footer {
     text-align: left;
-    margin-top: 5px;
-    font-style: italic;
-    color: grey;
-    line-height: 1.8;
-    font-size: 13px;
+    padding: 40px 5%;
+    border-top: 1px solid black;
+    color: white;
+    background-color: black;
+    font-family: monospace;
+    position: relative;
 }
 
-.btn-add-to-cart {
-    font-family: 'HK Modular', monospace;
+.footer-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    font-family: "HK Modular", monospace;
+    display: inline-block;
+    width: 150px;
+    height: auto;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    display: inline-block;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo img.spin {
+    animation: rotate 3s linear infinite;
+}
+
+/* ===== FOOTER CONTACT ===== */
+.footer-col.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: monospace;
+    align-self: flex-start;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.footer-contact-label,
+.nav-label {
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: grey;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+.footer-contact p {
+    font-family: monospace;
+    color: white;
+    font-size: 0.75rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* ===== FOOTER NAVIGATION ===== */
+.navbottom {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: monospace;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.navbottom li {
+    list-style: none;
+}
+
+.navbottom a {
+    color: white;
+    text-decoration: none;
+    font-family: monospace;
+}
+
+.navbottom a:hover {
+    color: #777;
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+.nav-label {
+    font-size: 1.0rem;
+}
+
+/* ===== FOOTER BOTTOM ===== */
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 25px;
+    margin-top: 40px;
+}
+
+.footer-copy {
+    font-family: monospace;
+    color: white;
+    font-size: 0.70rem;
+    margin: 0;
+    text-align: center;
 }
