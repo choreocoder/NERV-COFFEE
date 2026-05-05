@@ -806,10 +806,11 @@ h1 {
     transition: transform 0.1s ease-in-out, background-color 0.3s;
 }
 
-.btn-send:active {
-    transform: scale(0.95);
-}
 
+
+.btn-send:hover {
+    background-color: grey;
+}
 
     
 
