@@ -115,6 +115,34 @@ header.scrolled {
     transition: 0.5s;
 }
 
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: black;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.cart-panel {
+    display: none;
+    position: fixed;
+}
+.cart-panel.active {
+    display: block;
+}
+
 .cart-icon svg {
     width: auto;
     height: 1.2rem;
