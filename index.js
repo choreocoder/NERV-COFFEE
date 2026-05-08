@@ -34,7 +34,6 @@ let productsData = [];
 
 /* DOM elements */
 const cartButton = document.getElementById("cartButton");
-const cartPanel = document.getElementById("cartPanel");
 const cartItemsContainer = document.getElementById("cartItems");
 
 
@@ -99,12 +98,12 @@ function renderCart() {
 }
 
 
-/* Open / Close cart */
-if (cartButton && cartPanel) {
-    cartButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        cartPanel.classList.toggle("active");
-        renderCart();
+/* ===== 🔧 FIX ADDED: SAFE BUTTON ATTACHMENT ===== */
+function attachCartButtons() {
+    document.querySelectorAll(".btn-add-to-cart").forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            addToCart(productsData[index]);
+        });
     });
 }
 
@@ -124,20 +123,15 @@ fetch("http://localhost:3000/products")
         const card = cards[index];
         if (!card) return;
 
-        const name = card.querySelector(".product-name");
-        const desc = card.querySelector(".product-description");
         const price = card.querySelector(".product-price");
 
-        if (name) name.textContent = product.name;
-        if (desc) desc.textContent = product.description;
         if (price) price.textContent = "R " + product.price;
     });
 
-    document.querySelectorAll(".btn-add-to-cart").forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-            addToCart(productsData[index]);
-        });
-    });
+    /* 🔥 FIX: ensure DOM buttons exist before attaching */
+    setTimeout(() => {
+        attachCartButtons();
+    }, 0);
 
     updateCartUI();
     renderCart();
