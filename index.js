@@ -30,6 +30,7 @@ observer.observe(logo);
 document.addEventListener('DOMContentLoaded', () => {
         const buttons = document.querySelectorAll('.btn-add-to-cart');
         // Create cart badge and side panel UI
+        const BACKEND_URL = 'http://localhost:3000';
         const cartIconLink = document.querySelector('.cart-icon a');
         const cartBadge = document.createElement('span');
         cartBadge.className = 'cart-badge';
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // position relative container for badge
         const cartLi = document.querySelector('.cart-icon');
         if (cartLi) cartLi.style.position = 'relative';
-        if (cartIconLink) cartLi.appendChild(cartBadge);
+        if (cartIconLink && cartLi) cartLi.appendChild(cartBadge);
 
         // create side cart panel
         const sideCart = document.createElement('aside');
@@ -47,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="cart-header">
                 <strong>Your Cart</strong>
                 <div>
-                    <button class="clear-cart">Clear</button>
-                    <button class="close-cart" aria-label="Close">×</button>
+                    <button class="clear-cart" type="button">Clear</button>
+                    <button class="close-cart" type="button" aria-label="Close">×</button>
                 </div>
             </div>
             <div class="cart-items"></div>
@@ -58,16 +59,34 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(sideCart);
 
+        function loadLocalCart() {
+            try {
+                const raw = localStorage.getItem('nerv-cart');
+                return raw ? JSON.parse(raw) : [];
+            } catch (err) {
+                console.warn('Invalid local cart data, resetting', err);
+                localStorage.removeItem('nerv-cart');
+                return [];
+            }
+        }
+
+        function saveLocalCart(items) {
+            localStorage.setItem('nerv-cart', JSON.stringify(items));
+        }
+
         async function fetchCart() {
             try {
-                const resp = await fetch('http://localhost:3000/cart');
+                const resp = await fetch(`${BACKEND_URL}/cart`);
                 if (!resp.ok) throw new Error('Failed to fetch cart');
                 const items = await resp.json();
+                saveLocalCart(items);
                 updateCartUI(items);
                 return items;
             } catch (err) {
-                console.error('fetchCart error', err);
-                return [];
+                const fallbackItems = loadLocalCart();
+                console.warn('Backend cart fetch failed, using local cart fallback', err);
+                updateCartUI(fallbackItems);
+                return fallbackItems;
             }
         }
 
@@ -91,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const right = document.createElement('div');
                 const remove = document.createElement('button');
                 remove.className = 'remove-item';
+                remove.type = 'button';
                 remove.textContent = 'Remove';
                 right.appendChild(remove);
                 row.appendChild(left);
@@ -104,16 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         async function addItemToCart(item) {
             try {
-                const resp = await fetch('http://localhost:3000/cart', {
+                const resp = await fetch(`${BACKEND_URL}/cart`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(item),
                 });
                 if (!resp.ok) throw new Error('Network response was not ok');
-                await fetchCart();
+                const items = await resp.json().then((data) => data.cart || []);
+                saveLocalCart(items);
+                updateCartUI(items);
             } catch (err) {
-                console.error('Add to cart failed', err);
-                alert('Could not add to cart. Try again later.');
+                console.warn('Backend unavailable, saving cart locally', err);
+                const localItems = loadLocalCart();
+                localItems.push(item);
+                saveLocalCart(localItems);
+                updateCartUI(localItems);
             }
         }
 
@@ -132,13 +157,38 @@ document.addEventListener('DOMContentLoaded', () => {
         sideCart.addEventListener('click', (e) => {
             if (e.target.matches('.close-cart')) sideCart.classList.remove('open');
             if (e.target.matches('.clear-cart')) {
-                fetch('http://localhost:3000/cart/clear', { method: 'POST' }).then(() => fetchCart());
+                fetch(`${BACKEND_URL}/cart/clear`, { method: 'POST' })
+                    .then((resp) => {
+                        if (!resp.ok) throw new Error('Failed to clear remote cart');
+                        return resp.json();
+                    })
+                    .then(() => {
+                        saveLocalCart([]);
+                        fetchCart();
+                    })
+                    .catch(() => {
+                        saveLocalCart([]);
+                        updateCartUI([]);
+                    });
             }
             if (e.target.matches('.remove-item')) {
                 const row = e.target.closest('.cart-item');
                 if (!row) return;
                 const id = row.dataset.id;
-                fetch(`http://localhost:3000/cart/${encodeURIComponent(id)}`, { method: 'DELETE' }).then(() => fetchCart());
+                fetch(`${BACKEND_URL}/cart/${encodeURIComponent(id)}`, { method: 'DELETE' })
+                    .then((resp) => {
+                        if (!resp.ok) throw new Error('Failed to remove remote item');
+                        return resp.json();
+                    })
+                    .then((data) => {
+                        saveLocalCart(data.cart || []);
+                        fetchCart();
+                    })
+                    .catch(() => {
+                        const localItems = loadLocalCart().filter((item) => item.id !== id);
+                        saveLocalCart(localItems);
+                        updateCartUI(localItems);
+                    });
             }
         });
 
