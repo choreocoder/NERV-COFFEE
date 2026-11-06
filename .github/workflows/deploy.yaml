@@ -23,14 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Prepare site files
+        run: |
+          mkdir -p _site
+          cp index.html index.js stylesheets.css _site/
+          cp -R pages assets fonts _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            index.html
-            index.js
-            stylesheets.css
-            pages/
-            assets/
-            fonts/
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
