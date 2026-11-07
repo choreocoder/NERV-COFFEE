@@ -30,7 +30,6 @@ observer.observe(logo);
 document.addEventListener('DOMContentLoaded', () => {
         const buttons = document.querySelectorAll('.btn-add-to-cart');
         // Create cart badge and side panel UI
-        const BACKEND_URL = 'http://localhost:3000';
         const cartIconLink = document.querySelector('.cart-icon a');
         const cartBadge = document.createElement('span');
         cartBadge.className = 'cart-badge';
@@ -62,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function loadLocalCart() {
             try {
                 const raw = localStorage.getItem('nerv-cart');
-                return raw ? JSON.parse(raw) : [];
+                const items = raw ? JSON.parse(raw) : [];
+                return Array.isArray(items) ? items : [];
             } catch (err) {
                 console.warn('Invalid local cart data, resetting', err);
                 localStorage.removeItem('nerv-cart');
@@ -72,22 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function saveLocalCart(items) {
             localStorage.setItem('nerv-cart', JSON.stringify(items));
-        }
-
-        async function fetchCart() {
-            try {
-                const resp = await fetch(`${BACKEND_URL}/cart`);
-                if (!resp.ok) throw new Error('Failed to fetch cart');
-                const items = await resp.json();
-                saveLocalCart(items);
-                updateCartUI(items);
-                return items;
-            } catch (err) {
-                const fallbackItems = loadLocalCart();
-                console.warn('Backend cart fetch failed, using local cart fallback', err);
-                updateCartUI(fallbackItems);
-                return fallbackItems;
-            }
         }
 
         function updateCartUI(items) {
@@ -106,7 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.className = 'cart-item';
                 row.dataset.id = it.id;
                 const left = document.createElement('div');
-                left.innerHTML = `<div><strong>${it.name}</strong><div style="font-size:0.9rem;color:#666">R ${it.price}</div></div>`;
+                const name = document.createElement('strong');
+                name.textContent = it.name;
+                const price = document.createElement('div');
+                price.style.fontSize = '0.9rem';
+                price.style.color = '#666';
+                price.textContent = `R ${it.price}`;
+                left.append(name, price);
                 const right = document.createElement('div');
                 const remove = document.createElement('button');
                 remove.className = 'remove-item';
@@ -122,33 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
             sideCart.querySelector('.cart-total').textContent = `Total: R${total.toFixed(2)}`;
         }
 
-        async function addItemToCart(item) {
-            try {
-                const resp = await fetch(`${BACKEND_URL}/cart`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(item),
-                });
-                if (!resp.ok) throw new Error('Network response was not ok');
-                const items = await resp.json().then((data) => data.cart || []);
-                saveLocalCart(items);
-                updateCartUI(items);
-            } catch (err) {
-                console.warn('Backend unavailable, saving cart locally', err);
-                const localItems = loadLocalCart();
-                localItems.push(item);
-                saveLocalCart(localItems);
-                updateCartUI(localItems);
-            }
+        function addItemToCart(item) {
+            const items = loadLocalCart();
+            items.push(item);
+            saveLocalCart(items);
+            updateCartUI(items);
         }
 
         // toggle side cart
         if (cartIconLink) {
-            cartIconLink.addEventListener('click', async (e) => {
+            cartIconLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 sideCart.classList.toggle('open');
                 if (sideCart.classList.contains('open')) {
-                    await fetchCart();
+                    updateCartUI(loadLocalCart());
                 }
             });
         }
@@ -157,44 +134,22 @@ document.addEventListener('DOMContentLoaded', () => {
         sideCart.addEventListener('click', (e) => {
             if (e.target.matches('.close-cart')) sideCart.classList.remove('open');
             if (e.target.matches('.clear-cart')) {
-                fetch(`${BACKEND_URL}/cart/clear`, { method: 'POST' })
-                    .then((resp) => {
-                        if (!resp.ok) throw new Error('Failed to clear remote cart');
-                        return resp.json();
-                    })
-                    .then(() => {
-                        saveLocalCart([]);
-                        fetchCart();
-                    })
-                    .catch(() => {
-                        saveLocalCart([]);
-                        updateCartUI([]);
-                    });
+                saveLocalCart([]);
+                updateCartUI([]);
             }
             if (e.target.matches('.remove-item')) {
                 const row = e.target.closest('.cart-item');
                 if (!row) return;
                 const id = row.dataset.id;
-                fetch(`${BACKEND_URL}/cart/${encodeURIComponent(id)}`, { method: 'DELETE' })
-                    .then((resp) => {
-                        if (!resp.ok) throw new Error('Failed to remove remote item');
-                        return resp.json();
-                    })
-                    .then((data) => {
-                        saveLocalCart(data.cart || []);
-                        fetchCart();
-                    })
-                    .catch(() => {
-                        const localItems = loadLocalCart().filter((item) => item.id !== id);
-                        saveLocalCart(localItems);
-                        updateCartUI(localItems);
-                    });
+                const items = loadLocalCart().filter((item) => item.id !== id);
+                saveLocalCart(items);
+                updateCartUI(items);
             }
         });
 
         // wire add-to-cart buttons
         buttons.forEach((btn) => {
-            btn.addEventListener('click', async (e) => {
+            btn.addEventListener('click', (e) => {
                 const card = e.target.closest('.product-card');
                 if (!card) return;
                 const nameEl = card.querySelector('.product-name');
@@ -209,13 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     price,
                 };
 
-                await addItemToCart(item);
+                addItemToCart(item);
             });
         });
 
         const buyButtons = document.querySelectorAll('.buy-button-1, .buy-button-2, .buy-button-3');
         buyButtons.forEach((btn) => {
-            btn.addEventListener('click', async (e) => {
+            btn.addEventListener('click', () => {
                 const name = btn.dataset.name || btn.textContent.trim() || 'Product';
                 const price = btn.dataset.price || '0.00';
                 const item = {
@@ -223,12 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     name,
                     price,
                 };
-                await addItemToCart(item);
+                addItemToCart(item);
                 sideCart.classList.add('open');
             });
         });
 
         // initialize badge on load
-        fetchCart();
+            updateCartUI(loadLocalCart());
 });
 

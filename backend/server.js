@@ -12,10 +12,10 @@ app.use(express.json());
 
 // Database connection (create first so routes can use it safely)
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "workbench_user",
-  password: "StrongPass123!",
-  database: "coffee_shop",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 let dbConnected = false;
